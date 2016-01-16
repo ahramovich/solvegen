@@ -16,6 +16,7 @@ public class DaoContextConfiguration {
     @Bean
     public DataSource bookDataSource() {
         // TODO connection pool
+        // TODO use properties file
         DriverManagerDataSource ds =
                 new DriverManagerDataSource("jdbc:mysql://localhost:3306/solvegen", "login", "password");
         ds.setDriverClassName("com.mysql.jdbc.Driver");
