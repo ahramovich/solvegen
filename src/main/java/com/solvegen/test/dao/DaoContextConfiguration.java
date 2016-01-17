@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
@@ -31,5 +32,10 @@ public class DaoContextConfiguration {
     @Bean
     public BookDao bookDao() {
         return new BookJdbcDao();
+    }
+
+    @Bean
+    public DataSourceTransactionManager transactionManager(@Qualifier("bookDataSource") DataSource bookDataSource) {
+        return new DataSourceTransactionManager(bookDataSource);
     }
 }

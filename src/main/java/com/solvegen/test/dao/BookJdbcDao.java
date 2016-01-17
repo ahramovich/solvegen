@@ -7,10 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Maksim Ahramovich
  */
+@Transactional
 public class BookJdbcDao implements BookDao {
     @Autowired
     private JdbcTemplate bookJdbcTemplate;
