@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Maksim Ahramovich
  */
 public class Book {
-    public final int id;
+    public final String id;
     public final String author;
     public final String title;
     public final String genre; // Enum?
@@ -15,7 +15,7 @@ public class Book {
     public final String description;
 
 
-    public Book(int id, String author, String title, String genre, Double price, Date publishDate, String description) {
+    public Book(String id, String author, String title, String genre, Double price, Date publishDate, String description) {
         this.id = id;
         this.author = author;
         this.title = title;
