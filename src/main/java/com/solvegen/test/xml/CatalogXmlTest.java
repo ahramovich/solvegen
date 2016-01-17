@@ -19,8 +19,7 @@ public class CatalogXmlTest {
         Book book2 = new Book("bk102", "Ralls, Kim", "Midnight Rain", "Fantasy", 5.95,
                 new GregorianCalendar(2000, 11, 16).getTime(),
                 "A former architect battles corporate zombies, an evil sorceress, and her own childhood to become queen of the world.");
-        CatalogXml catalog = new CatalogXml(Arrays.asList(new Book[]{book1, book2})
-                .stream().map(BookXml::new).collect( Collectors.toList()));
+        CatalogXml catalog = new CatalogXml(Arrays.asList(new Book[]{book1, book2}));
 
         Assert.assertEquals(getCatalogXml(), catalog.serialize());
         Assert.assertEquals(catalog, CatalogXml.deserialize(getCatalogXml()));

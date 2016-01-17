@@ -5,7 +5,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.solvegen.test.dao.Book;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -22,8 +24,8 @@ public class CatalogXml {
     public CatalogXml(){
     }
 
-    public CatalogXml(List<BookXml> books) {
-        this.books = books;
+    public CatalogXml(List<Book> books) {
+        this.books = books.stream().map(BookXml::new).collect(Collectors.toList());
     }
 
     public String serialize() {
