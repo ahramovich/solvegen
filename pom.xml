@@ -3,16 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xs">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.solvegen</groupId>
-    <artifactId>test</artifactId>
+    <artifactId>solvegen</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>test</name>
+    <name>solvegen</name>
 
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
         <mysql.version>5.1.6</mysql.version>
         <slf4j.version>1.7.13</slf4j.version>
         <simplexml.version>2.7.1</simplexml.version>
+        <servlet.version>2.5</servlet.version>
         <commons.lang.version>3.0</commons.lang.version>
     </properties>
 
@@ -20,6 +21,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -63,6 +70,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
         </dependency>
     </dependencies>
 

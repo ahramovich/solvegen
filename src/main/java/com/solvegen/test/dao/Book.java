@@ -24,4 +24,17 @@ public class Book {
         this.publishDate = publishDate;
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
+                ", price=" + price +
+                ", publishDate=" + publishDate +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
