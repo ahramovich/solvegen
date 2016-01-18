@@ -92,6 +92,7 @@
                     <webappDirectory>${project.basedir}/web</webappDirectory>
                     <webResources>
                         <resource>
+                            <directory>${project.basedir}/lib</directory>
                             <targetPath>WEB-INF/lib</targetPath>
                         </resource>
                     </webResources>
