@@ -10,6 +10,7 @@
 
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
+        <mysql.version>5.1.6</mysql.version>
         <slf4j.version>1.7.13</slf4j.version>
         <simplexml.version>2.7.1</simplexml.version>
     </properties>
@@ -49,6 +50,12 @@
         	<groupId>junit</groupId>
         	<artifactId>junit</artifactId>
         	<version>4.12</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>mysql</groupId>
+        	<artifactId>mysql-connector-java</artifactId>
+        	<version>${mysql.version}</version>
         </dependency>
     </dependencies>
 
