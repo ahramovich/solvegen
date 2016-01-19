@@ -1,7 +1,5 @@
 package com.solvegen.test.dao;
 
-import java.util.Date;
-
 /**
  * @author Maksim Ahramovich
  */
@@ -11,11 +9,11 @@ public class Book {
     public final String title;
     public final String genre; // Enum?
     public final Double price;
-    public final Date publishDate;
+    public final String publishDate;
     public final String description;
 
 
-    public Book(String id, String author, String title, String genre, Double price, Date publishDate, String description) {
+    public Book(String id, String author, String title, String genre, Double price, String publishDate, String description) {
         this.id = id;
         this.author = author;
         this.title = title;

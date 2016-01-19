@@ -15,8 +15,6 @@ import org.simpleframework.xml.core.Persister;
  * @author Maksim Ahramovich
  */
 public class BookXml {
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-
     @Attribute
     private String id;
     @Element
@@ -41,16 +39,12 @@ public class BookXml {
         this.title = book.title;
         this.genre = book.genre;
         this.price = book.price;
-        this.publishDate = DATE_FORMAT.format(book.publishDate);
+        this.publishDate = book.publishDate;
         this.description = book.description;
     }
 
     public Book getBook() {
-        try {
-            return new Book(id, author, title, genre, price, DATE_FORMAT.parse(publishDate), description);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        return new Book(id, author, title, genre, price, publishDate, description);
     }
 
     public static BookXml deserialize(InputStream is) throws Exception {

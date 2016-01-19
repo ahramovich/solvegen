@@ -26,14 +26,14 @@ public class BookJdbcDao implements BookDao {
 
     @Override
     public List<Book> getBooks() {
-        return bookJdbcTemplate.query("select * from books", new BookMapper());
+        return bookJdbcTemplate.query("SELECT * FROM books", new BookMapper());
     }
 
 
     private static class BookMapper implements RowMapper<Book> {
         public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Book(rs.getString("id"), rs.getString("author"), rs.getString("title"), rs.getString("genre"),
-                    rs.getDouble("price"), rs.getDate("publish_date"), rs.getString("description"));
+                    rs.getDouble("price"), rs.getString("publish_date"), rs.getString("description"));
         }
     }
 }

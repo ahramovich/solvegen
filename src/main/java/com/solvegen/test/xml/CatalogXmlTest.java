@@ -15,9 +15,9 @@ public class CatalogXmlTest {
     @Test
     public void test() {
         Book book1 = new Book("bk101", "Gambardella, Matthew", "XML Developer's Guide", "Computer", 44.95,
-                new GregorianCalendar(2000, 9, 01).getTime(), "An in-depth look at creating applications with XML.");
+                "2000-09-01", "An in-depth look at creating applications with XML.");
         Book book2 = new Book("bk102", "Ralls, Kim", "Midnight Rain", "Fantasy", 5.95,
-                new GregorianCalendar(2000, 11, 16).getTime(),
+                "2000-11-16",
                 "A former architect battles corporate zombies, an evil sorceress, and her own childhood to become queen of the world.");
         CatalogXml catalog = new CatalogXml(Arrays.asList(new Book[]{book1, book2}));
 
