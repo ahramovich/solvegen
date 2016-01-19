@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 /**
  * @author Maksim Ahramovich
@@ -18,10 +21,11 @@ public class DaoContextConfiguration {
     public DataSource bookDataSource() {
         // TODO connection pool
         // TODO use properties file
-        DriverManagerDataSource ds =
-                new DriverManagerDataSource("jdbc:mysql://localhost:3306/solvegen", "login", "password");
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        return ds;
+        return new EmbeddedDatabaseBuilder()
+                .setName("dbsolvegen")
+                .setType(EmbeddedDatabaseType.HSQL)
+                .addScript("create-db.sql")
+                .build();
     }
 
     @Bean
