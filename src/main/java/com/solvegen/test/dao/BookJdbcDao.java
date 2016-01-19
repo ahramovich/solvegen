@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -18,10 +19,19 @@ public class BookJdbcDao implements BookDao {
     private JdbcTemplate bookJdbcTemplate;
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void insertOrUpdate(Book book) {
-        bookJdbcTemplate
-                .update("insert into books (id, author, title, genre, price, publish_date, description)",
-                        book.id, book.author, book.title, book.genre, book.price, book.publishDate, book.description);
+        int sameBooksCount =
+                bookJdbcTemplate.queryForObject("SELECT COUNT(*) FROM books WHERE book_id=?", Integer.class, book.id);
+        if (sameBooksCount == 0) {
+            bookJdbcTemplate.update(
+                    "INSERT INTO books (book_id, author, title, genre, price, publish_date, description) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    book.id, book.author, book.title, book.genre, book.price, book.publishDate, book.description);
+        } else {
+            bookJdbcTemplate.update(
+                    "UPDATE books SET author=?, title=?, genre=?, price=?, publish_date=?, description=? WHERE book_id=?",
+                    book.author, book.title, book.genre, book.price, book.publishDate, book.description, book.id);
+        }
     }
 
     @Override
