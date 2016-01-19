@@ -19,7 +19,7 @@ public class BookJdbcDao implements BookDao {
     private JdbcTemplate bookJdbcTemplate;
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 10)
     public void insertOrUpdate(Book book) {
         int sameBooksCount =
                 bookJdbcTemplate.queryForObject("SELECT COUNT(*) FROM books WHERE book_id=?", Integer.class, book.id);
