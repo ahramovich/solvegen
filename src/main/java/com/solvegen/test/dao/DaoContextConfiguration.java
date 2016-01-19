@@ -17,8 +17,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 public class DaoContextConfiguration {
     @Bean
     public DataSource bookDataSource() {
-        // TODO connection pool
-        // TODO use properties file
         return new EmbeddedDatabaseBuilder()
                 .setName("dbsolvegen")
                 .setType(EmbeddedDatabaseType.HSQL)
