@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
@@ -24,7 +22,7 @@ public class DaoContextConfiguration {
         return new EmbeddedDatabaseBuilder()
                 .setName("dbsolvegen")
                 .setType(EmbeddedDatabaseType.HSQL)
-                .addScript("create-db.sql")
+                .addScript("create-tables.sql")
                 .build();
     }
 
