@@ -9,5 +9,5 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import({DaoContextConfiguration.class})
-public class ProjectConfiguration {
+public class ProjectContextConfiguration {
 }
