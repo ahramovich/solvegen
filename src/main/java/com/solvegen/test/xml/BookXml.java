@@ -3,6 +3,7 @@ package com.solvegen.test.xml;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 
 import com.solvegen.test.dao.Book;
 import org.apache.commons.lang3.Validate;
@@ -52,8 +53,10 @@ public class BookXml {
         try {
             BookXml bookXml = new Persister().read(BookXml.class, s);
             Validate.isTrue(bookXml.price > 0, "Wrong price");
-            Validate.isTrue(DATE_FORMAT.parse(bookXml.publishDate)
-                            .toInstant().isBefore(Instant.now()), "Wrong publish_date");
+
+            Date publishDate = DATE_FORMAT.parse(bookXml.publishDate);
+            Validate.isTrue(publishDate.toInstant().isBefore(Instant.now()), "Wrong publish_date");
+            bookXml.publishDate = DATE_FORMAT.format(publishDate);
             return bookXml;
         } catch (Exception e) {
             throw new RuntimeException(e);
