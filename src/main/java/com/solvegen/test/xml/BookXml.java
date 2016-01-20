@@ -1,6 +1,11 @@
 package com.solvegen.test.xml;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+
 import com.solvegen.test.dao.Book;
+import org.apache.commons.lang3.Validate;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.core.Persister;
@@ -9,6 +14,8 @@ import org.simpleframework.xml.core.Persister;
  * @author Maksim Ahramovich
  */
 public class BookXml {
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
     @Attribute
     private String id;
     @Element
@@ -24,7 +31,7 @@ public class BookXml {
     @Element
     private String description;
 
-    public BookXml(){
+    public BookXml() {
     }
 
     public BookXml(Book book) {
@@ -43,7 +50,11 @@ public class BookXml {
 
     public static BookXml deserialize(String s) {
         try {
-            return new Persister().read(BookXml.class, s);
+            BookXml bookXml = new Persister().read(BookXml.class, s);
+            Validate.isTrue(bookXml.price > 0, "Wrong price");
+            Validate.isTrue(DATE_FORMAT.parse(bookXml.publishDate)
+                            .toInstant().isBefore(Instant.now()), "Wrong publish_date");
+            return bookXml;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
