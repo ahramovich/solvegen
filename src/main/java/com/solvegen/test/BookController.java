@@ -12,6 +12,7 @@ import com.solvegen.test.dao.Book;
 import com.solvegen.test.dao.BookDao;
 import com.solvegen.test.xml.BookXml;
 import com.solvegen.test.xml.CatalogXml;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,14 @@ public class BookController {
         logger.debug("Receive request: {}", request);
         if (request.getContentLength() > 0) {
             try (InputStream is = request.getInputStream()) {
-                Book book = BookXml.deserialize(is).getBook();
-                logger.debug("Update book: {}", book);
-                bookDao.insertOrUpdate(book);
+                String bookString = IOUtils.toString(is);
+                logger.debug("Request book: {}", bookString);
+
+                if(!bookString.isEmpty()) {
+                    Book book = BookXml.deserialize(bookString).getBook();
+                    logger.debug("Update book: {}", book);
+                    bookDao.insertOrUpdate(book);
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

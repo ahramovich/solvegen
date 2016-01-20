@@ -1,14 +1,8 @@
 package com.solvegen.test.xml;
 
-import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import com.solvegen.test.dao.Book;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
 import org.simpleframework.xml.core.Persister;
 
 /**
@@ -47,8 +41,8 @@ public class BookXml {
         return new Book(id, author, title, genre, price, publishDate, description);
     }
 
-    public static BookXml deserialize(InputStream is) throws Exception {
-        return new Persister().read(BookXml.class, is);
+    public static BookXml deserialize(String s) throws Exception {
+        return new Persister().read(BookXml.class, s);
     }
 
     @Override
