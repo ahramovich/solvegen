@@ -1,8 +1,6 @@
 package com.solvegen.test.xml;
 
 import java.util.Arrays;
-import java.util.GregorianCalendar;
-import java.util.stream.Collectors;
 
 import com.solvegen.test.dao.Book;
 import org.junit.Assert;
