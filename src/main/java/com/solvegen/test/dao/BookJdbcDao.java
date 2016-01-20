@@ -43,7 +43,7 @@ public class BookJdbcDao implements BookDao {
 
     private static class BookMapper implements RowMapper<Book> {
         public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Book(rs.getString("id"), rs.getString("author"), rs.getString("title"), rs.getString("genre"),
+            return new Book(rs.getString("book_id"), rs.getString("author"), rs.getString("title"), rs.getString("genre"),
                     rs.getDouble("price"), rs.getString("publish_date"), rs.getString("description"));
         }
     }
