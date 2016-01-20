@@ -1,4 +1,4 @@
-CREATE TABLE books (
+CREATE TABLE IF NOT EXISTS books (
     id INTEGER IDENTITY PRIMARY KEY,
     book_id VARCHAR(20),
     author VARCHAR(255),
