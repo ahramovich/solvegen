@@ -38,8 +38,8 @@ public class CatalogXml {
     }
 
     public static CatalogXml deserialize(String s) {
-        try (InputStream is = new ByteArrayInputStream(s.getBytes())) {
-            return new Persister().read(CatalogXml.class, is);
+        try {
+            return new Persister().read(CatalogXml.class, s);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

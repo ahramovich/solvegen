@@ -41,8 +41,12 @@ public class BookXml {
         return new Book(id, author, title, genre, price, publishDate, description);
     }
 
-    public static BookXml deserialize(String s) throws Exception {
-        return new Persister().read(BookXml.class, s);
+    public static BookXml deserialize(String s) {
+        try {
+            return new Persister().read(BookXml.class, s);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

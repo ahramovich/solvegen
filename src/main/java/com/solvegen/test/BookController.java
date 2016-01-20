@@ -43,7 +43,7 @@ public class BookController {
                     logger.debug("Update book: {}", book);
                     bookDao.insertOrUpdate(book);
                 }
-            } catch (Exception e) {
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
