@@ -35,6 +35,7 @@ public class BookJdbcDao implements BookDao {
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 10)
     public List<Book> getBooks() {
         return bookJdbcTemplate.query("SELECT * FROM books", new BookMapper());
     }
