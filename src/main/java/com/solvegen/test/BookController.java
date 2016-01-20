@@ -32,7 +32,7 @@ public class BookController {
 
     @RequestMapping(value = "changeBook", method = RequestMethod.POST)
     public void changeBook(HttpServletRequest request, HttpServletResponse response) {
-        logger.debug("Receive request: {}", request);
+        logger.debug("Receive book request");
         if (request.getContentLength() > 0) {
             try (InputStream is = request.getInputStream()) {
                 String bookString = IOUtils.toString(is);
